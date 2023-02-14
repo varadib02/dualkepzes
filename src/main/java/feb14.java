@@ -34,21 +34,20 @@ public class feb14 {
         Scanner bekeres = new Scanner(System.in);
         int ev=bekeres.nextInt();
 
-        if(ev%4==0){
-            if(ev%400==0 || ev%100!=0){
-                System.out.println("Szokoev a "+ ev);
+ 
+        if (ev % 4 == 0) {
+            if (ev % 100 == 0) {
+                if (ev % 400 == 0) {
+                    System.out.println("Szökőév");
+                } else {
+                    System.out.println("Nem Szökőév");
+                }
+            } else {
+                System.out.println("Szökőév");
             }
-            else
-            {
-                System.out.println("Nem szokoev a "+ev);
-            }
-
+        } else {
+            System.out.println("Nem Szökőév");
         }
-        else
-        {
-            System.out.println("Nem szokoev a "+ev);
-        }
-
 
     }
     
