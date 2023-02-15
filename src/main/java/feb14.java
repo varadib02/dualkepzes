@@ -14,6 +14,7 @@ public class feb14 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        /* 
         Scanner bekeres = new Scanner(System.in);
         int ev=bekeres.nextInt();
         if ((ev%100!=0 && ev%4==0) || ev%400==0)
@@ -28,6 +29,30 @@ public class feb14 {
         
         
         
+        Scanner bekeres = new Scanner(System.in);
+        int ev=bekeres.nextInt();
+        String szokoev=((ev%100!=0 && ev%4==0) || ev%400==0)?"Szokoev a "+ev:"Nem szokoev a "+ev;
+        System.out.println(szokoev);
+        */
+
+        Scanner bekeres = new Scanner(System.in);
+        int ev=bekeres.nextInt();
+
+ 
+        if (ev % 4 == 0) {
+            if (ev % 100 == 0) {
+                if (ev % 400 == 0) {
+                    System.out.println("Szökőév");
+                } else {
+                    System.out.println("Nem Szökőév");
+                }
+            } else {
+                System.out.println("Szökőév");
+            }
+        } else {
+            System.out.println("Nem Szökőév");
+        }
+
     }
     
 }
