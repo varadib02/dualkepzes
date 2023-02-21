@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 import java.util.Scanner;
+import java.util.Random;
 /**
  *
  * @author User
@@ -22,12 +23,36 @@ public class feb21 {
         double szam3=3.0;
         double szam4=1.5;
         //System.out.println(feb21.osszeadas(szam3,szam4));
-        
+        /*
         System.out.println(feb21.osszeadas(szam1,szam2,szam3));
         Scanner muv = new Scanner(System.in);
-        System.out.println(feb21.szamologep(szam1,szam2,muv.next()));
+        String muvelet=muv.next();
+        System.out.println(feb21.szamologep(szam1,szam2,muvelet));
+        muv.close();
+        */
         
+        //kopapirollo
+        String igaze="i";
+        System.out.println("Hány kört szeretne játszani?: ");
+        Scanner match = new Scanner(System.in);
+        int hossz=match.nextInt();
+        int gepW=0;
+        int teW=0;
+        int draw=0;
+        for (int i = 0; i < hossz; i++) {
+            Random r = new Random();
+            int gep=r.nextInt(1,4);
+            
+            System.out.println((i+1)+". Kör a Tipped (1-3): ");
+            Scanner bekert = new Scanner(System.in);
+            int bekeres=bekert.nextInt();
+            kopapirollo(bekeres,gep,teW,gepW,draw);
+            bekert.close();
+        }
         
+        if(teW>gepW)  System.out.println("A játék győztese tehát te vagy.");
+        else if(teW<gepW) System.out.println("A játék győztese tehát a gép.");
+        else System.out.println("A játéknak nincs győztese.");
     }
     
     //Acces modifier
@@ -44,21 +69,39 @@ public class feb21 {
         return a+b+c;
     }
     public  static Double szamologep(Double a,Double b,String muvelet){
-        if(muvelet=="+") {
+        if(muvelet.equals("+")) {
             return a+b;
         }
-        else if(muvelet=="-"){
+        else if(muvelet.equals("-")){
             return a-b;
         }
-        else if(muvelet=="*") {
+        else if(muvelet.equals("*")) {
             return a*b;
         }
-        else if(muvelet=="/"){
+        else if(muvelet.equals("/")){
             return a/b;
         }
         else{
             return -1.0;
         }
+    }
+    public  static int kopapirollo(int bekeres,int gep,int teW,int gepW,int draw){
+        
+            if((bekeres==1 && gep==3)||(bekeres==2 && gep==1)||(bekeres==3 && gep==2)){
+                System.out.println("Nyertél");
+                teW++;
+            }
+            else if((bekeres==3 && gep==1)||(bekeres==1 && gep==2)||(bekeres==2 && gep==3)){
+                System.out.println("A gép nyert");
+                gepW++;
+            }
+            else{
+                System.out.println("Döntetlen");
+                draw++;
+            } 
+        
+        System.out.println("Te nyertél: "+teW+", Gép nyert: "+gepW+", Döntetlen: "+draw);
+        return 0;
     }
     
 }
