@@ -32,27 +32,7 @@ public class feb21 {
         */
         
         //kopapirollo
-        String igaze="i";
-        System.out.println("Hány kört szeretne játszani?: ");
-        Scanner match = new Scanner(System.in);
-        int hossz=match.nextInt();
-        int gepW=0;
-        int teW=0;
-        int draw=0;
-        for (int i = 0; i < hossz; i++) {
-            Random r = new Random();
-            int gep=r.nextInt(1,4);
-            
-            System.out.println((i+1)+". Kör a Tipped (1-3): ");
-            Scanner bekert = new Scanner(System.in);
-            int bekeres=bekert.nextInt();
-            kopapirollo(bekeres,gep,teW,gepW,draw);
-            bekert.close();
-        }
-        
-        if(teW>gepW)  System.out.println("A játék győztese tehát te vagy.");
-        else if(teW<gepW) System.out.println("A játék győztese tehát a gép.");
-        else System.out.println("A játéknak nincs győztese.");
+        kopapirollo();
     }
     
     //Acces modifier
@@ -85,8 +65,21 @@ public class feb21 {
             return -1.0;
         }
     }
-    public  static int kopapirollo(int bekeres,int gep,int teW,int gepW,int draw){
-        
+    public  static void kopapirollo(){
+        System.out.println("Hány kört szeretne játszani?: ");
+        Scanner match = new Scanner(System.in);
+        int hossz=match.nextInt();
+        int gepW=0;
+        int teW=0;
+        int draw=0;
+        for (int i = 0; i < hossz; i++) {
+            Random r = new Random();
+            int gep=r.nextInt(1,4);
+            
+            System.out.println((i+1)+". Kör a Tipped (1-3): ");
+            Scanner bekert = new Scanner(System.in);
+            int bekeres=bekert.nextInt();
+            
             if((bekeres==1 && gep==3)||(bekeres==2 && gep==1)||(bekeres==3 && gep==2)){
                 System.out.println("Nyertél");
                 teW++;
@@ -98,10 +91,18 @@ public class feb21 {
             else{
                 System.out.println("Döntetlen");
                 draw++;
-            } 
+            }
+            
+            bekert.close();
+        }
+        
+        if(teW>gepW)  System.out.println("A játék győztese tehát te vagy.");
+        else if(teW<gepW) System.out.println("A játék győztese tehát a gép.");
+        else System.out.println("A játéknak nincs győztese.");
+        
+             
         
         System.out.println("Te nyertél: "+teW+", Gép nyert: "+gepW+", Döntetlen: "+draw);
-        return 0;
     }
     
 }
